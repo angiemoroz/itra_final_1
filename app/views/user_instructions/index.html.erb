@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User Instructions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Instruction</th>
+      <th>Date of creation</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_instructions.each do |user_instruction| %>
+      <tr>
+        <td><%= user_instruction.instruction %></td>
+        <td><%= user_instruction.date_of_creation %></td>
+        <td><%= link_to 'Show', user_instruction %></td>
+        <td><%= link_to 'Edit', edit_user_instruction_path(user_instruction) %></td>
+        <td><%= link_to 'Destroy', user_instruction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User Instruction', new_user_instruction_path %>
