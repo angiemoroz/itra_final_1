@@ -1,5 +1,8 @@
 class UserInstructionsController < ApplicationController
+
+
   before_action :set_user_instruction, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
   # GET /user_instructions
   # GET /user_instructions.json
