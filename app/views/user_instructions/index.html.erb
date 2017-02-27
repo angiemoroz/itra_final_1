@@ -25,8 +25,10 @@
         <td><%= link_to 'Destroy', user_instruction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
        <% end %>
-    
-       <tr><%= link_to 'Выйти', destroy_user_session_path, :method => :delete, class: "btn btn-default" %></tr>
+       <br>
+       <%= link_to 'New User Instruction', new_user_instruction_path %>
+      <br>
+       <tr><%= link_to 'Sign out', destroy_user_session_path, :method => :delete, class: "btn btn-default" %></tr>
    
    <% else %>
     <% @user_instructions.each do |user_instruction| %>
@@ -42,11 +44,11 @@
    <br>
    <%= link_to 'Sign in with VKontakte', user_vkontakte_omniauth_authorize_path %>
    <br>
-   <%= link_to 'Sign in with Twitter', user_twitter_omniauth_authorize_path(email: 'vkvkv') %>
+   <%= link_to 'Sign in with Twitter', user_twitter_omniauth_authorize_path %>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New User Instruction', new_user_instruction_path %>
+
