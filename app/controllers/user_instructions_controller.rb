@@ -26,8 +26,10 @@ class UserInstructionsController < ApplicationController
 
   # POST /user_instructions
   # POST /user_instructions.json
-  def create
+  def create  
+
     @user_instruction = UserInstruction.new(user_instruction_params)
+    @user_instruction.user = current_user
 
     respond_to do |format|
       if @user_instruction.save
@@ -72,6 +74,8 @@ class UserInstructionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_instruction_params
-      params.require(:user_instruction).permit(:instruction, :date_of_creation)
+      
+     
+      params.require(:user_instruction).permit(:instruction, :date_of_creation, :user)
     end
 end

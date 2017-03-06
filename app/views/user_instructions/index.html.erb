@@ -1,54 +1,58 @@
-<p id="notice"><%= notice %></p>
+<h1>Instructions</h1>
 
-<h1>User Instructions</h1>
+<p id="notice"><%= notice %></p>
 
 <table>
   <thead>
     <tr>
       <th>Instruction</th>
       <th>Date of creation</th>
-      <th colspan="3"></th>
+      <th>Author</th>
     </tr>
   </thead>
 
   <tbody>
- 
-
     <% if user_signed_in? %>
       <span>Hello, <%= current_user.name %></span>
-       <% @user_instructions.each do |user_instruction| %>
-      <tr>
-        <td><%= user_instruction.instruction %></td>
-        <td><%= user_instruction.date_of_creation %></td>
-        <td><%= link_to 'Show', user_instruction %></td>
-        <td><%= link_to 'Edit', edit_user_instruction_path(user_instruction) %></td>
-        <td><%= link_to 'Destroy', user_instruction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-       <% end %>
-       <br>
-       <%= link_to 'New User Instruction', new_user_instruction_path %>
+        <% @user_instructions.each do |user_instruction| %>
+        <tr>
+          <td><%= user_instruction.instruction %></td>
+          <td><%= user_instruction.date_of_creation %></td>
+          <td><%= user_instruction.user.name %></td>
+          <td><%= link_to 'Show', user_instruction, class: "btn btn-default"%></td>
+          <% if current_user == user_instruction.user %>
+            <td><%= link_to 'Edit', edit_user_instruction_path(user_instruction), class: "btn btn-default" %></td>
+            <td><%= link_to 'Destroy', user_instruction, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %></td>
+          <% end %>
+        </tr>
+        <% end %>
       <br>
-       <tr><%= link_to 'Sign out', destroy_user_session_path, :method => :delete, class: "btn btn-default" %></tr>
+      <%= link_to 'New User Instruction', new_user_instruction_path, class: "btn btn-default" %>
+      <br>
+      <tr><%= link_to 'Sign out', destroy_user_session_path, :method => :delete, class: "btn btn-default" %></tr>
    
-   <% else %>
-    <% @user_instructions.each do |user_instruction| %>
+    <% else %>
+      <% @user_instructions.each do |user_instruction| %>
       <tr>
         <td><%= user_instruction.instruction %></td>
         <td><%= user_instruction.date_of_creation %></td>
-        <td><%= link_to 'Show', user_instruction %></td>
-         </tr>
-       <% end %>
+        <td><%= user_instruction.user.name %></td>
+        <td><%= link_to 'Show', user_instruction, class: "btn btn-default"%></td>
+      </tr>
+      <% end %>
    
 
-   <%= link_to 'Sign in with Facebook', user_facebook_omniauth_authorize_path %>
-   <br>
-   <%= link_to 'Sign in with VKontakte', user_vkontakte_omniauth_authorize_path %>
-   <br>
-   <%= link_to 'Sign in with Twitter', user_twitter_omniauth_authorize_path %>
+      <%= link_to 'Sign in with Facebook', user_facebook_omniauth_authorize_path, class: "btn btn-default" %>
+      <br>
+      <br>
+      <%= link_to 'Sign in with VKontakte', user_vkontakte_omniauth_authorize_path, class: "btn btn-default" %>
+      <br>
+      <br>
+      <%= link_to 'Sign in with Twitter', user_twitter_omniauth_authorize_path, class: "btn btn-default" %>
     <% end %>
   </tbody>
 </table>
 
-<br>
+
 
 
