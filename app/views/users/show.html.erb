@@ -8,7 +8,7 @@
   <tbody>
     
       <span>Hello, <%= current_user.name %></span>
-        <% @current_user.user_instructions.each do |user_instruction| %>
+        <% current_user.user_instructions.each do |user_instruction| %>
         <tr>
           <td><%= user_instruction.instruction %></td>
           <td><%= user_instruction.date_of_creation %></td>

@@ -19,12 +19,15 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 		if @user.persisted?
 			sign_in_and_redirect @user, :event => :authentication
 			set_flash_message(:notice, :success, :kind => "VKontakte") if is_navigational_format?
-			redirect_to user_path
 		else
 			session["devise.vkontakte_data"] = request.env["omniauth.auth"]
 			redirect_to root_path
 			
 		end
+	end
+
+	def after_sign_in_path_for(resource)
+	  user_path resource
 	end
 
 	def twitter
