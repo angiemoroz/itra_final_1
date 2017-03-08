@@ -4,3 +4,4 @@
 
 <%= link_to 'Show', @user_instruction %> |
 <%= link_to 'Back', user_instructions_path %>
+<%= link_to 'ShowSteps', instruction_steps_path(user_instruction_id: @user_instruction.id) %>
