@@ -2,6 +2,19 @@
 
 <%= render 'form', user_instruction: @user_instruction %>
 
-<%= link_to 'Show', @user_instruction %> |
-<%= link_to 'Back', user_instructions_path %>
-<%= link_to 'ShowSteps', instruction_steps_path(user_instruction_id: @user_instruction.id) %>
+<table>
+<tr>
+<td>Title</td>
+<td>Description</td>
+</tr>
+ <% @steps.each do |instruction_step| %>
+        <tr>
+          <td><%= link_to instruction_step.title, instruction_step %></td>
+          <td><%= instruction_step.description %></td>          
+                 
+        </tr>
+ <% end %>
+ </table>
+
+<%= link_to 'Back', @user_instruction.user %>
+<%= link_to 'Add step', new_instruction_step_path(user_instruction_id: @user_instruction.id) %>

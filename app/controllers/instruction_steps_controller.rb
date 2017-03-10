@@ -22,6 +22,7 @@ class InstructionStepsController < ApplicationController
 
   # GET /instruction_steps/1/edit
   def edit
+      @user_instruction_id = InstructionStep.find(params[:id]).user_instruction_id
   end
 
   # POST /instruction_steps

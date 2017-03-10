@@ -8,13 +8,15 @@
   <tbody>
     
       <span>Hello, <%= current_user.name %></span>
-        <% current_user.user_instructions.each do |user_instruction| %>
+        
+        <% @instructions.each do |user_instruction| %>
         <tr>
           <td><%= user_instruction.instruction %></td>
           <td><%= user_instruction.date_of_creation %></td>
           <td><%= user_instruction.user.name %></td>
           <td><%= link_to 'Show', user_instruction, class: "btn btn-default"%></td>
           <td><%= link_to 'Edit', edit_user_instruction_path(user_instruction), class: "btn btn-default" %></td>
+         
           <td><%= link_to 'Destroy', user_instruction, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %></td>
           
         </tr>
@@ -25,7 +27,7 @@
       <tr><%= link_to 'Sign out', destroy_user_session_path, :method => :delete, class: "btn btn-default" %></tr>
   </tbody>
 </table>
-
+<%= will_paginate @instructions %>
 
 
 

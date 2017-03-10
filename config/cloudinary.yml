@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: disuvf2s9
+  api_key: '615624182663542'
+  api_secret: Ae3U4zURoBKP2vU-f8Gr0CB6o4Y
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: disuvf2s9
+  api_key: '615624182663542'
+  api_secret: Ae3U4zURoBKP2vU-f8Gr0CB6o4Y
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: disuvf2s9
+  api_key: '615624182663542'
+  api_secret: Ae3U4zURoBKP2vU-f8Gr0CB6o4Y
+  enhance_image_tag: true
+  static_image_support: false

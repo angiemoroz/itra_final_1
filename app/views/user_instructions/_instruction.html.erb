@@ -1,0 +1,16 @@
+
+<tr>
+<td>Title</td>
+<td>Description</td>
+</tr>
+
+ <% @steps.each do |instruction_step| %>
+        <tr>
+          <td><%= instruction_step.title %></td>
+          <td><%= instruction_step.description %></td>          
+                 
+        </tr>
+ <% end %>
+<tr><td>
+<%= will_paginate @steps %>
+</td></tr>

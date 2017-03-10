@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<% javascript_include_tag 'pagination.js', 'data-turbolinks-track' => false %>
 <p>
   <strong>Instruction:</strong>
   <%= @user_instruction.instruction %>
@@ -10,5 +10,8 @@
   <%= @user_instruction.date_of_creation %>
 </p>
 
-<%= link_to 'Edit', edit_user_instruction_path(@user_instruction) %> |
-<%= link_to 'Back', user_instructions_path %>
+<table id="instruction">
+	<%= render 'instruction' %>
+</table>
+
+

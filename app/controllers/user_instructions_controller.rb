@@ -7,21 +7,26 @@ class UserInstructionsController < ApplicationController
   # GET /user_instructions
   # GET /user_instructions.json
   def index
-    @user_instructions = UserInstruction.all
+    @user_instructions = UserInstruction.paginate(:per_page => 10, :page => params[:page])
+
   end
 
   # GET /user_instructions/1
   # GET /user_instructions/1.json
   def show
+    @steps = @user_instruction.instruction_steps.paginate(:per_page => 1, :page => params[:page])
+    
   end
 
   # GET /user_instructions/new
   def new
     @user_instruction = UserInstruction.new
+    @user_instruction.date_of_creation = Date.current
   end
 
   # GET /user_instructions/1/edit
   def edit
+    @steps = @user_instruction.instruction_steps
   end
 
   # POST /user_instructions
