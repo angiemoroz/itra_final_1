@@ -21,6 +21,14 @@
     <%= f.text_area :description %>
   </div>
 
+  <div class="field" >
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+    <label><%= instruction_step.image%></label>  
+    <br>
+   <%= image_tag instruction_step.image_url %>
+  </div>
+
   <%= f.hidden_field :user_instruction_id, value: @user_instruction_id %>
 
   <div class="actions">

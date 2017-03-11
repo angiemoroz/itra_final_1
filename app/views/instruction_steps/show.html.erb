@@ -4,7 +4,9 @@
   <strong>Title:</strong>
   <%= @instruction_step.title %>
 </p>
-
+<p>
+	<% unless @instruction_step.image_url.nil? %><%= image_tag @instruction_step.image_url %><br /><% end %>
+</p>
 <p>
   <strong>Description:</strong>
   <%= @instruction_step.description %>

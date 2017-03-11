@@ -72,6 +72,6 @@ class InstructionStepsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def instruction_step_params
-      params.require(:instruction_step).permit(:title, :description, :user_instruction_id)
+      params.require(:instruction_step).permit(:title, :description, :user_instruction_id, :image)
     end
 end
