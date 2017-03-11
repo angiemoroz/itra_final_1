@@ -4,14 +4,23 @@
   <strong>Instruction:</strong>
   <%= @user_instruction.instruction %>
 </p>
-
 <p>
   <strong>Date of creation:</strong>
   <%= @user_instruction.date_of_creation %>
 </p>
+<p>
+  <strong>Category:</strong>
+  <%= @user_instruction.category %>
+</p>
+<p>
+  <strong>Tags:</strong>
+  
+ 
 
+</p>
 <table id="instruction">
 	<%= render 'instruction' %>
 </table>
-
-
+<% if user_signed_in? %>
+<%= link_to 'Back to User', @user_instruction.user %>
+<% end %>

@@ -21,10 +21,25 @@
     <%= f.text_field :date_of_creation, value: Date.current, readonly:'' %>
   </div>
 
+  <div class="field">
+    <%= f.label :category %>
+    <%= f.select :category, options_for_select([['Наука'], ['Спорт'],['Дом'], ['Здоровье']], user_instruction.category) %>    
+  </div>
+
+  
+  
+
+  
+        
+
+        
+
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+
 <style>
   .field
 </style>

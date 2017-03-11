@@ -1,33 +1,24 @@
 <h1>User</h1>
 
 <p id="notice"><%= notice %></p>
-
+<% javascript_include_tag 'pagination.js', 'data-turbolinks-track' => false %>
 <table>
- 
+  <span>Hello, <%= current_user.name %></span>
 
-  <tbody>
+  <tbody id="instructions_of_user">
     
-      <span>Hello, <%= current_user.name %></span>
-        
-        <% @instructions.each do |user_instruction| %>
-        <tr>
-          <td><%= user_instruction.instruction %></td>
-          <td><%= user_instruction.date_of_creation %></td>
-          <td><%= user_instruction.user.name %></td>
-          <td><%= link_to 'Show', user_instruction, class: "btn btn-default"%></td>
-          <td><%= link_to 'Edit', edit_user_instruction_path(user_instruction), class: "btn btn-default" %></td>
-         
-          <td><%= link_to 'Destroy', user_instruction, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default" %></td>
-          
-        </tr>
-        <% end %>
-      <br>
+      
+      
+        <%= render 'instructions_of_user' %>
+      
+     
+      
+  </tbody>
+</table>
+<br>
       <%= link_to 'New User Instruction', new_user_instruction_path, class: "btn btn-default" %>
       <br>
       <tr><%= link_to 'Sign out', destroy_user_session_path, :method => :delete, class: "btn btn-default" %></tr>
-  </tbody>
-</table>
-<%= will_paginate @instructions %>
 
 
 

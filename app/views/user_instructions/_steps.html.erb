@@ -1,6 +1,5 @@
 <% if user_signed_in? %>
-      <span>Hello, <%= current_user.name %></span>
-
+      
         <% @user_instructions.each do |user_instruction| %>
         <tr>
           <td><%= link_to user_instruction.instruction, user_instruction, class: "btn btn-default" %></td>
@@ -13,10 +12,7 @@
           <% end %>
         </tr>
         <% end %>
-      <br>
-      <%= link_to 'New User Instruction', new_user_instruction_path, class: "btn btn-default" %>
-      <br>
-      <tr><%= link_to 'Sign out', destroy_user_session_path, :method => :delete, class: "btn btn-default" %></tr>
+      
    
     <% else %>
       <% @user_instructions.each do |user_instruction| %>
@@ -29,13 +25,7 @@
       <% end %>
    
 
-      <%= link_to 'Sign in with Facebook', user_facebook_omniauth_authorize_path, class: "btn btn-default" %>
-      <br>
-      <br>
-      <%= link_to 'Sign in with VKontakte', user_vkontakte_omniauth_authorize_path, class: "btn btn-default" %>
-      <br>
-      <br>
-      <%= link_to 'Sign in with Twitter', user_twitter_omniauth_authorize_path, class: "btn btn-default" %>
+      
     <% end %>
     <tr><td>
      <%= will_paginate @user_instructions %>

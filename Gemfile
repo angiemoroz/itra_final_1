@@ -47,7 +47,9 @@ gem 'carrierwave'
 gem 'cloudinary'
 
 gem 'will_paginate'
-gem 'ajax_pagination'
+
+gem 'acts-as-taggable-on'
+gem 'rails-jquery-autocomplete'
 
 
 group :development, :test do

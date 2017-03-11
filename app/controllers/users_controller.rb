@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   # GET /user_instructions/1.json
   def show
     @user = User.find(params[:id])
-    @instructions = @user.user_instructions.paginate(:per_page => 10, :page => params[:page])
+    @instructions = @user.user_instructions.paginate(:per_page => 5, :page => params[:page])
   end
 
   # GET /user_instructions/new

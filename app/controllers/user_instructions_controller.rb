@@ -4,6 +4,7 @@ class UserInstructionsController < ApplicationController
   before_action :set_user_instruction, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
+  
   # GET /user_instructions
   # GET /user_instructions.json
   def index
@@ -81,6 +82,6 @@ class UserInstructionsController < ApplicationController
     def user_instruction_params
       
      
-      params.require(:user_instruction).permit(:instruction, :date_of_creation, :user)
+      params.require(:user_instruction).permit(:instruction, :date_of_creation, :user, :category)
     end
 end
