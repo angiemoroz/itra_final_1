@@ -8,8 +8,11 @@ class UserInstructionsController < ApplicationController
   # GET /user_instructions
   # GET /user_instructions.json
   def index
-    @user_instructions = UserInstruction.paginate(:per_page => 10, :page => params[:page])
-
+    if params[:tag]
+      @user_instructions = UserInstruction.tagged_with(params[:tag]).paginate(:per_page => 1, :page => params[:page])
+    else  
+      @user_instructions = UserInstruction.paginate(:per_page => 1, :page => params[:page])
+    end
   end
 
   # GET /user_instructions/1
@@ -82,6 +85,6 @@ class UserInstructionsController < ApplicationController
     def user_instruction_params
       
      
-      params.require(:user_instruction).permit(:instruction, :date_of_creation, :user, :category, :video)
+      params.require(:user_instruction).permit(:instruction, :date_of_creation, :user, :category, :video, :tag_list)
     end
 end

@@ -16,12 +16,11 @@
 <p>
 	<iframe width="560" height="315" src=<%=@user_instruction.video%> frameborder="0" allowfullscreen></iframe>
 </p>
-<p>
-	
-</p>
+
 
 <p>
   <strong>Tags:</strong>
+  <%= raw @user_instruction.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
 </p>
 <table id="instruction">
 	<%= render 'instruction' %>

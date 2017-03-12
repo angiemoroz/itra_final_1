@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-	
+   resources :tags, except: :show
+  get 'tags/:tag', to: 'user_instructions#index'	
   resources :instruction_steps
   devise_for :users, :controllers => {:omniauth_callbacks => "omniauth_callbacks"}
   resources :user_instructions
