@@ -23,17 +23,14 @@
 
   <div class="field">
     <%= f.label :category %>
-    <%= f.select :category, options_for_select([['Наука'], ['Спорт'],['Дом'], ['Здоровье']], user_instruction.category) %>    
+    <%= f.select :category, options_for_select([['Наука'], ['Спорт'],['Дом'], ['Здоровье'], ['Образование'], ['Красота']], user_instruction.category) %>    
   </div>
 
-  
-  
-
-  
-        
-
-        
-
+  <div class="field">
+    <%= f.label :video %>
+    <%= f.text_field :video %>    
+  </div> 
+      
   <div class="actions">
     <%= f.submit %>
   </div>

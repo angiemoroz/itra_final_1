@@ -82,6 +82,6 @@ class UserInstructionsController < ApplicationController
     def user_instruction_params
       
      
-      params.require(:user_instruction).permit(:instruction, :date_of_creation, :user, :category)
+      params.require(:user_instruction).permit(:instruction, :date_of_creation, :user, :category, :video)
     end
 end

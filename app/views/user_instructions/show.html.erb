@@ -12,11 +12,16 @@
   <strong>Category:</strong>
   <%= @user_instruction.category %>
 </p>
+
+<p>
+	<iframe width="560" height="315" src=<%=@user_instruction.video%> frameborder="0" allowfullscreen></iframe>
+</p>
+<p>
+	
+</p>
+
 <p>
   <strong>Tags:</strong>
-  
- 
-
 </p>
 <table id="instruction">
 	<%= render 'instruction' %>
