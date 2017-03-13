@@ -1,32 +1,51 @@
 
 $(document).ready(function(){
-	if(!$('#user_instruction_tag_list')[0]){return;}
-	var path = '/' + $('#user_instruction_tag_list')[0].baseURI.split('/').slice(3, 5).join('/');
-  console.log(path)
-	var id = $('#user_instruction_tag_list')[0].baseURI.split('/')[4];
-  if(id=='new'){
+  
+});
+
+function onClickFunction(){
+		var tags = $('.select2-selection__rendered li');
+		var result = '';
+		for(var i = 0; i < tags.length - 1; i++){
+		  result += tags[i].title + ',';
+		}
+		$('#user_instruction_tag_list')[0].value = result; 
+}
+
+function onDocummentReady(){
+  var path;
+  var id;
+  if($('#user_instruction_tag_list')[0]) {
+    path = '/' + $('#user_instruction_tag_list')[0].baseURI.split('/').slice(3, 5).join('/');
+    id = $('#user_instruction_tag_list')[0].baseURI.split('/')[4];
+  } else {
+    path = 'localhost:3000/user_instructions/new'
+    id = 'new'
+  }
+
+  if(id == 'new'){
     activateSelect2();
     return;
   }
-	var selectedTags = [];
-	$.ajax({
-	  type: 'GET',
-	  url: path + '/get_appropriate_tags',
-	  data: {id: id},
-	  success: function(data) {
-	    var list = $('#tags_list');
-	    tagsLength = data.length;
-	    if(data.length != 0){
-	      var lis = '';
-	      for(var i = 0; i < data.length; i++){
-	        lis += '<option value="' + i + "\" selected=\"selected\">" + data[i] + '</option>\n';
-	        selectedTags[i] = i;
-	      }
-	      list.html(lis);
-	    }
-	    activateSelect2();
-	  }
-	});
+  var selectedTags = [];
+  $.ajax({
+    type: 'GET',
+    url: path + '/get_appropriate_tags',
+    data: {id: id},
+    success: function(data) {
+      var list = $('#tags_list');
+      tagsLength = data.length;
+      if(data.length != 0){
+        var lis = '';
+        for(var i = 0; i < data.length; i++){
+          lis += '<option value="' + i + "\" selected=\"selected\">" + data[i] + '</option>\n';
+          selectedTags[i] = i;
+        }
+        list.html(lis);
+      }
+      activateSelect2();
+    }
+  });
 
   function activateSelect2(){
     var $select = $(".js-data-example-ajax").select2({
@@ -58,13 +77,4 @@ $(document).ready(function(){
     });
       $select.val(selectedTags).trigger("change"); 
   };
-});
-
-function onClickFunction(){
-		var tags = $('.select2-selection__rendered li');
-		var result = '';
-		for(var i = 0; i < tags.length - 1; i++){
-		  result += tags[i].title + ',';
-		}
-		$('#user_instruction_tag_list')[0].value = result; 
 }

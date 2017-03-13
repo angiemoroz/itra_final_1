@@ -34,6 +34,7 @@
 
   <div class="field tags-wrp">
     <p><%= f.label :tag_list, "Tags" %></p>
+    </span>
     <%= f.text_field :tag_list %>
     <select class="js-data-example-ajax select2-hidden-accessible" id="tags_list" multiple="multiple" style="width: 300px">
       
@@ -92,6 +93,6 @@
 
 </style>
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-
+<script>
+  onDocummentReady();
+</script>

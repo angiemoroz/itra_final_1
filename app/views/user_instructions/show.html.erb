@@ -18,12 +18,8 @@
   <%= @user_instruction.category %>
   </p>
 </p>
-<% if @user_instruction.video == nil %>
-<p>sdsdsd</p>
-<%end%>
 <div class="video">
-<% if @user_instruction.video == nil %>
-<p>sdsdsd</p>
+<% if @user_instruction.video == '' %>
 <%else%>
 	<iframe width="560" height="315" src=<%=@user_instruction.video%> ></iframe>
   <%end%>
