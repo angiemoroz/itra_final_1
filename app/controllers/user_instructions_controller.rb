@@ -92,9 +92,7 @@ class UserInstructionsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def user_instruction_params
-      
-     
+    def user_instruction_params        
       params.require(:user_instruction).permit(:instruction, :date_of_creation, :user, :category, :video, :tag_list)
     end
 end

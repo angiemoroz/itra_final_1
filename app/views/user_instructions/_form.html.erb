@@ -13,29 +13,29 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :instruction %>
-    <%= f.text_field :instruction %>
+    <p><%= f.label :instruction %></p>
+    <p><%= f.text_field :instruction %></p>
   </div>
 
   <div class="field">
-    <%= f.label :date_of_creation %>
-    <%= f.text_field :date_of_creation, value: Date.current, readonly:'' %>
+    <p><%= f.label :date_of_creation %></p>
+    <p><%= f.text_field :date_of_creation, value: Date.current, readonly:'' %></p>
   </div>
 
   <div class="field">
-    <%= f.label :category %>
+    <p><%= f.label :category %></p>
     <%= f.select :category, options_for_select([['Наука'], ['Спорт'],['Дом'], ['Здоровье'], ['Образование'], ['Красота']], user_instruction.category) %>    
   </div>
 
   <div class="field">
-    <%= f.label :video %>
-    <%= f.text_field :video %>    
+    <p><%= f.label :video %></p>
+    <p><%= f.text_field :video %></p>    
   </div> 
 
   <div class="field tags-wrp">
-    <%= f.label :tag_list, "Tags" %>
+    <p><%= f.label :tag_list, "Tags" %></p>
     <%= f.text_field :tag_list %>
-    <select class="js-data-example-ajax" id="tags_list" multiple="multiple" style="width: 300px">
+    <select class="js-data-example-ajax select2-hidden-accessible" id="tags_list" multiple="multiple" style="width: 300px">
       
     </select>
     </div>
@@ -73,7 +73,25 @@
     display: none;
   }
 
+  .field {
+    max-width: 500px;
+    margin: auto;
+  }
+
+  .field p {
+    font-size: 20px
+  }
+
+  input{
+    height: 36px;
+    padding: 5px 16px;
+    font-size: 18px;
+    line-height: 1.3333333;
+    border-radius: 6px;
+  }
+
 </style>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+

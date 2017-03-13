@@ -46,7 +46,7 @@ gem "font-awesome-rails"
 gem 'bootstrap-social-rails'
 gem 'carrierwave'
 gem 'cloudinary'
-
+gem "jqcloud-rails"
 
 gem 'will_paginate'
 

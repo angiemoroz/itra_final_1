@@ -2,6 +2,7 @@
 $(document).ready(function(){
 	if(!$('#user_instruction_tag_list')[0]){return;}
 	var path = '/' + $('#user_instruction_tag_list')[0].baseURI.split('/').slice(3, 5).join('/');
+  console.log(path)
 	var id = $('#user_instruction_tag_list')[0].baseURI.split('/')[4];
   if(id=='new'){
     activateSelect2();
@@ -61,7 +62,6 @@ $(document).ready(function(){
 
 function onClickFunction(){
 		var tags = $('.select2-selection__rendered li');
-		debugger
 		var result = '';
 		for(var i = 0; i < tags.length - 1; i++){
 		  result += tags[i].title + ',';
