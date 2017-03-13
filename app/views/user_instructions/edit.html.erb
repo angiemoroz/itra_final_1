@@ -13,10 +13,13 @@ Instruction Steps
                  
       
  <% end %></td></tr>
+ <tr><td>
+ <%= link_to 'Add step', new_instruction_step_path(user_instruction_id: @user_instruction.id), class: "btn btn-default add" %>
+ </td></tr>
  </table>
 
-<%= link_to 'Back', @user_instruction.user, class: "btn btn-default prof" %>
-<%= link_to 'Add step', new_instruction_step_path(user_instruction_id: @user_instruction.id), class: "btn btn-default add" %>
+<%= link_to 'Back', @user_instruction.user, class: "btn btn-default" %>
+
 
 
 <style rel='stylesheet'>
@@ -26,16 +29,4 @@ Instruction Steps
     font-size: 20px;
   }
 
-.prof{
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin-top: 25px;
-  right: 10px;
-  right: 100px;
-}
-
-.add{
-	position: center;
-}
 </style>

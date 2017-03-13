@@ -1,7 +1,8 @@
-<h1>Profile</h1>
+
 
 <p id="notice"><%= notice %></p>
 <% javascript_include_tag 'pagination.js', 'data-turbolinks-track' => false %>
+<h1>Profile</h1>
 <table class="table table-striped table-hover">
   <p class="hello">Hello, <%= current_user.name %>!</p>
 
@@ -17,11 +18,7 @@
 
 
 <style rel="stylesheet">
-	.hello{
-		margin: auto;
-		text-align: center;
-		font-size: 20px;
-	}
+	
 
 	tbody{
 		text-align: center !important

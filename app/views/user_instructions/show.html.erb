@@ -18,9 +18,15 @@
   <%= @user_instruction.category %>
   </p>
 </p>
-
+<% if @user_instruction.video == nil %>
+<p>sdsdsd</p>
+<%end%>
 <div class="video">
-	<iframe width="560" height="315" src=<%=@user_instruction.video%> frameborder="0" allowfullscreen></iframe>
+<% if @user_instruction.video == nil %>
+<p>sdsdsd</p>
+<%else%>
+	<iframe width="560" height="315" src=<%=@user_instruction.video%> ></iframe>
+  <%end%>
 </div>
 
 
@@ -31,55 +37,8 @@
 <table id="instruction">
 	<%= render 'instruction' %>
 </table>
-<% if user_signed_in? %>
-<%= link_to 'Profile', @user_instruction.user, class: "btn btn-default prof" %>
-<% end %>
 
 
-<style rel='stylesheet'>
-  .p-text {
-    text-align: center;
-    font-size: 23px;
-    font-weight: bold;
-    margin-top: 20px;
-  }
 
-  .val{
-    font-weight: normal
-  }
-
-  .title{
-    margin-top: 50px
-  }
-
-  .video{
-    margin: auto;
-    width: 560px;
-    margin-top: 20px;
-  }
-
-  a:hover{
-    background-color: transparent;
-  }
-  .tags{
-    text-align: center;
-    max-width: 300px;
-    margin: auto;
-  }
-
-  .tags a{
-    font-size: 20px;
-    padding-left: 2px
-  }
-
-.prof{
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin-top: 25px;
-  right: 10px;
-  right: 100px;
-}
-</style>
 
 

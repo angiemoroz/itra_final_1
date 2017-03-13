@@ -28,7 +28,26 @@
     </div>   
   </div>   
 </div>
-<div id="tag_cloud" style="margin: auto;">
+<link rel="stylesheet" type="text/css" href="jqcloud/dist/jqcloud.css"/>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.js"></script>
+        <script type="text/javascript" src="jqcloud/dist/jqcloud.js"></script>
+        <script type="text/javascript">
+            
+            var word_list = [
+                {text: "Lorem", weight: 13},
+                {text: "Ipsum", weight: 10.5},
+                {text: "Dolor", weight: 9.4},
+                {text: "Sit", weight: 8},
+                {text: "Amet", weight: 6.2},
+                {text: "Consectetur", weight: 5},
+                {text: "Adipiscing", weight: 5}
+            ];
+            $(function () {
+                $("#example").jQCloud(word_list);
+            });
+        </script>
+<div id="example" style="width: 550px; height: 350px; border: 1px solid #ccc;"></div>
+<div id="tag_cloud">
   <% tag_cloud UserInstruction.tag_counts, %w[s m l] do |tag, css_class|%>
     <%= link_to tag.name, tag_path(tag.name), class: css_class%>
   <% end %>
@@ -51,17 +70,6 @@
 </table>
 
 
-<style rel='stylesheet'>
-.hello{
-    margin: auto;
-    text-align: center;
-    font-size: 20px;
-  }
 
-.tag_cloud{
-  margin: auto; 
-  text-align: center;
-}
-</style>
 
 
