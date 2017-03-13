@@ -1,3 +1,6 @@
+<% javascript_include_tag 'pagination.js'%>
+<% javascript_include_tag 'user_instructions'%>
+
 <h1>Instructions</h1>
 <div id="tag_cloud">
   <% tag_cloud UserInstruction.tag_counts, %w[s m l] do |tag, css_class|%>
@@ -5,7 +8,6 @@
   <% end %>
 </div>
 <p id="notice"><%= notice %></p>
-<% javascript_include_tag 'pagination.js', 'data-turbolinks-track' => false %>
 <% if user_signed_in? %>
       <span>Hello, <%= current_user.name %></span>
       <br>

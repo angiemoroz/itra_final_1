@@ -31,17 +31,47 @@
     <%= f.text_field :video %>    
   </div> 
 
-  <div class="field">
-    <%= f.label :tag_list, "Tags" %>
-    <%= f.text_field :tag_list %>    
-  </div> 
+  <div class="field tags-wrp">
+    <%= f.label :tag_list, "Tags2" %>
+    <%= f.text_field :tag_list %>
+    <select class="js-data-example-ajax" id="tags_list" multiple="multiple" style="width: 300px">
       
-  <div class="actions">
+    </select>
+    </div>
+  </div>
+  <div class="actions" onclick='onClickFunction()'>
     <%= f.submit %>
   </div>
+
 <% end %>
 
 
 <style>
-  .field
+  #tags_list {
+    padding-left: 0;
+    list-style-type: none;
+    position: absolute;
+    top:25px;
+    background: white;
+    z-index: 5;
+    height: 40px;
+    width: 100px
+    overflow-y: scroll;
+  }
+
+  #tags_list li:hover,#tags_list li:active {
+    background: red;
+  }
+
+  .tags-wrp {
+    position: relative;
+  }
+
+  #user_instruction_tag_list{
+    display: none;
+  }
+
 </style>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>

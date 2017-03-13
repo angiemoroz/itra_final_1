@@ -4,7 +4,11 @@ class TagsController < ApplicationController
   # GET /tags
   # GET /tags.json
   def index
-    @tags = Tag.all
+    @tags = Tag.order(:name)
+    respond_to do |format|
+      format.html
+      format.json { render json: @tags.tokens(params[:q]) }
+    end
   end
 
   # GET /tags/1
@@ -24,7 +28,7 @@ class TagsController < ApplicationController
   # POST /tags
   # POST /tags.json
   def create
-    @tag = Tag.new(tag_params)
+    @tag = Tag.new(params)
 
     respond_to do |format|
       if @tag.save
@@ -41,7 +45,7 @@ class TagsController < ApplicationController
   # PATCH/PUT /tags/1.json
   def update
     respond_to do |format|
-      if @tag.update(tag_params)
+      if @tag.update(params)
         format.html { redirect_to @tag, notice: 'Tag was successfully updated.' }
         format.json { render :show, status: :ok, location: @tag }
       else
@@ -68,7 +72,7 @@ class TagsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def tag_params
-      params.require(:tag).permit(:name)
-    end
+    #def tag_params
+     # params.require(:tag).permit(:name)
+    #end
 end

@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   get 'tags/:tag', to: 'user_instructions#index'	
   resources :instruction_steps
   devise_for :users, :controllers => {:omniauth_callbacks => "omniauth_callbacks"}
-  resources :user_instructions
+  resources :user_instructions do
+  	get :get_appropriate_tags
+  	get :get_all_tags
+  end
   resources :users
   
   

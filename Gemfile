@@ -49,7 +49,7 @@ gem 'cloudinary'
 gem 'will_paginate'
 
 gem 'acts-as-taggable-on'
-gem 'rails-jquery-autocomplete'
+
 
 
 group :development, :test do

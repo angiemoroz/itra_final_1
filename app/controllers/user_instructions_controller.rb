@@ -1,7 +1,7 @@
 class UserInstructionsController < ApplicationController
 
 
-  before_action :set_user_instruction, only: [:show, :edit, :update, :destroy]
+  before_action :set_user_instruction, only: [:show, :edit, :update, :destroy, :get_appropriate_tags]
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
   
@@ -73,6 +73,16 @@ class UserInstructionsController < ApplicationController
       format.html { redirect_to user_instructions_url, notice: 'User instruction was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def get_all_tags
+    search_word = params[:word]
+    words = Tag.all.select {|u| u.name.start_with?(search_word)}
+    render json: words.map { |w| w.name  }.to_json
+  end
+
+  def get_appropriate_tags
+    render json: @user_instruction.tag_list.to_json
   end
 
   private
