@@ -13,6 +13,87 @@
  *= require_tree .
  *= require_self 
  *= require token-input-facebook
+ *= require instruction_steps
  */
+
 @import "bootstrap-sprockets"
 @import "bootstrap"
+@import "font-awesome"
+@import bootstrap-social
+
+
+html
+  background-color: rgb(176, 188, 222)
+
+body
+  background-color: transparent
+
+a:visited
+  color: rgb(230, 230, 230)
+
+
+
+table 
+  max-width: 1200px !important  
+  width: 80% !important  
+  margin-left: 10% !important  
+  margin-right: 10% !important  
+  margin-top: 50px
+
+
+table > thead > tr > th, table > thead > tr > td, table > tbody > tr > th, .table > tbody > tr > td,   table> tfoot > tr > th, .table > tfoot > tr > td 
+  vertical-align: middle !important  
+  font-size: 16px !important
+
+
+.table-striped > tbody > tr:nth-child(odd) > td, .table-striped > tbody > tr:nth-child(odd) > th
+  background-color: rgba(255, 255, 255, 0.7) !important
+
+
+.table-hover > tbody > tr:hover > td, .table-hover > tbody > tr:hover > th
+  cursor: default  
+  background-color: rgba(0, 0, 0, 0.2) !important
+
+
+a:visited
+  color: black !important
+
+
+table a:hover
+  cursor: pointer
+
+
+.btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .btn-default.dropdown-toggle
+  color: rgb(100,100,100) !important
+
+
+.table-striped > tbody > tr:nth-child(odd) > td.paggination a:hover
+  background-color: transparent !important
+
+
+.table-striped > tbody > tr:nth-child(odd) > td.paggination 
+  background: transparent !important  
+  border-top: none  
+  text-align: center !important
+
+.paggination
+  text-align: center !important
+
+
+.paggination a:hover 
+  background-color: transparent
+
+
+.table-hover > tbody > tr:hover > td.paggination
+  background-color: transparent !important  
+
+.instruction, .sign-out
+  position: absolute
+  top: 0
+  right: 0
+  margin-top: 25px
+  right: 10px
+
+.instruction
+  right: 100px
+	

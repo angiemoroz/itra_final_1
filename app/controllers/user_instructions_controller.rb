@@ -9,9 +9,9 @@ class UserInstructionsController < ApplicationController
   # GET /user_instructions.json
   def index
     if params[:tag]
-      @user_instructions = UserInstruction.tagged_with(params[:tag]).paginate(:per_page => 1, :page => params[:page])
+      @user_instructions = UserInstruction.tagged_with(params[:tag]).paginate(:per_page => 10, :page => params[:page])
     else  
-      @user_instructions = UserInstruction.paginate(:per_page => 1, :page => params[:page])
+      @user_instructions = UserInstruction.paginate(:per_page => 10, :page => params[:page])
     end
   end
 

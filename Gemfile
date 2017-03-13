@@ -42,9 +42,11 @@ gem 'omniauth-vkontakte'
 gem 'omniauth-twitter'
 
 gem 'bootstrap-sass', '~> 3.2.0'
-
+gem "font-awesome-rails"
+gem 'bootstrap-social-rails'
 gem 'carrierwave'
 gem 'cloudinary'
+
 
 gem 'will_paginate'
 

@@ -1,9 +1,12 @@
 
 $(document).ready(function(){
-
-	console.log($('#user_instruction_tag_list'))
+	if(!$('#user_instruction_tag_list')[0]){return;}
 	var path = '/' + $('#user_instruction_tag_list')[0].baseURI.split('/').slice(3, 5).join('/');
 	var id = $('#user_instruction_tag_list')[0].baseURI.split('/')[4];
+  if(id=='new'){
+    activateSelect2();
+    return;
+  }
 	var selectedTags = [];
 	$.ajax({
 	  type: 'GET',
@@ -57,13 +60,11 @@ $(document).ready(function(){
 });
 
 function onClickFunction(){
-		console.log(9)
 		var tags = $('.select2-selection__rendered li');
-		console.log(tags)
 		debugger
 		var result = '';
 		for(var i = 0; i < tags.length - 1; i++){
 		  result += tags[i].title + ',';
 		}
 		$('#user_instruction_tag_list')[0].value = result; 
-	}
+}

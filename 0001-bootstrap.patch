@@ -1,0 +1,219 @@
+From 7a6c59c9ba5335700daf0dcf9c1ea1314e32172e Mon Sep 17 00:00:00 2001
+From: yauhenishopik <shopikevgesza@gmail.com>
+Date: Mon, 13 Mar 2017 07:13:50 +0300
+Subject: [PATCH] bootstrap
+
+---
+ Gemfile                                       |  5 +-
+ app/assets/stylesheets/application.css.sass   |  8 +++
+ app/assets/stylesheets/user_instructions.scss | 77 +++++++++++++++++++++++++++
+ app/views/user_instructions/index.html.erb    | 67 +++++++++++++----------
+ 4 files changed, 127 insertions(+), 30 deletions(-)
+
+diff --git a/Gemfile b/Gemfile
+index 005a6d4..e4685cb 100644
+--- a/Gemfile
++++ b/Gemfile
+@@ -42,10 +42,13 @@ gem 'omniauth-vkontakte'
+ gem 'omniauth-twitter'
+ 
+ gem 'bootstrap-sass', '~> 3.2.0'
+-
++gem "font-awesome-rails"
++gem 'bootstrap-social-rails'
+ gem 'carrierwave'
+ gem 'cloudinary'
+ 
++gem 'wdm', '>= 0.1.0'
++
+ gem 'will_paginate'
+ 
+ gem 'acts-as-taggable-on'
+diff --git a/app/assets/stylesheets/application.css.sass b/app/assets/stylesheets/application.css.sass
+index 3f00df7..b451bb5 100644
+--- a/app/assets/stylesheets/application.css.sass
++++ b/app/assets/stylesheets/application.css.sass
+@@ -12,6 +12,14 @@
+  *
+  *= require_tree .
+  *= require_self
++ *= require instruction_steps
+  */
++
+ @import "bootstrap-sprockets"
+ @import "bootstrap"
++@import "font-awesome"
++@import bootstrap-social
++
++
++body
++  background-color: rgb(176, 188, 222)
+diff --git a/app/assets/stylesheets/user_instructions.scss b/app/assets/stylesheets/user_instructions.scss
+index 802967d..3887273 100644
+--- a/app/assets/stylesheets/user_instructions.scss
++++ b/app/assets/stylesheets/user_instructions.scss
+@@ -1,3 +1,80 @@
+ // Place all the styles related to the User_instructions controller here.
+ // They will automatically be included in application.css.
+ // You can use Sass (SCSS) here: http://sass-lang.com/
++
++/*
++/* Created by Filipe Pina
++ * Specific styles of signin, register, component
++ */
++/*
++ * General styles
++ */
++
++body, html {
++  height: 100%;
++  background-repeat: no-repeat;
++  background-color: #d3d3d3;
++  font-family: 'Oxygen', sans-serif;
++}
++
++.main {
++  margin-top: 70px;
++}
++
++h1.title {
++  font-size: 50px;
++  font-family: 'Passion One', cursive;
++  font-weight: 400;
++}
++
++hr {
++  width: 10%;
++  color: #fff;
++}
++
++.form-group {
++  margin-bottom: 15px;
++}
++
++label {
++  margin-bottom: 15px;
++}
++
++input,
++input::-webkit-input-placeholder {
++  font-size: 11px;
++  padding-top: 3px;
++}
++
++.main-login {
++  background-color: rgba(255, 255, 255, 0.7);
++  /* shadows and rounded borders */
++  -moz-border-radius: 2px;
++  -webkit-border-radius: 2px;
++  border-radius: 2px;
++  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
++  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
++  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
++
++}
++
++.main-center {
++  margin-top: 30px;
++  margin: 0 auto;
++  max-width: 370px;
++  padding: 40px 40px;
++
++}
++
++.login-button {
++  margin-top: 5px;
++}
++
++.login-register {
++  font-size: 11px;
++  text-align: center;
++}
++
++.btn-social {
++  text-align: center;
++}
+diff --git a/app/views/user_instructions/index.html.erb b/app/views/user_instructions/index.html.erb
+index 5af326d..07c9ccb 100644
+--- a/app/views/user_instructions/index.html.erb
++++ b/app/views/user_instructions/index.html.erb
+@@ -1,38 +1,47 @@
+-<h1>Instructions</h1>
++<div class="container">
++  <div class="row main">
++    <div class="panel-heading">
++      <div class="panel-title text-center">
++        <h1 class="title">Instructions</h1>
++      </div>
++    </div>
++    <div class="main-login main-center">
++      <p id="notice"><%= notice %></p>
++      <% javascript_include_tag 'pagination.js', 'data-turbolinks-track' => false %>
++      <% if user_signed_in? %>
++          <span>Hello, <%= current_user.name %></span>
++          <br>
++          <%= link_to 'New User Instruction', new_user_instruction_path, class: "btn btn-default" %>
++          <br>
++          <tr><%= link_to 'Sign out', destroy_user_session_path, :method => :delete, class: "btn btn-default" %></tr>
++      <% else %>
++          <%= link_to user_facebook_omniauth_authorize_path, class: "btn-lg btn btn-block btn-social btn-facebook" do %>
++              <span class="fa fa-facebook"></span>Sign in with Facebook
++          <% end %>
++          <%= link_to user_vkontakte_omniauth_authorize_path, class: "btn-lg btn btn-block btn-social btn-vk" do %>
++              <span class="fa fa-vk"></span>Sign in with VKontakte
++          <% end %>
++          <%= link_to user_twitter_omniauth_authorize_path, class: "btn-lg btn btn-block btn-social btn-twitter" do %>
++              <span class="fa fa-twitter"></span>Sign in with Twitter
++          <% end %>
++      <% end %>
++    </div>
++  </div>
++</div>
++
++
+ 
+-<p id="notice"><%= notice %></p>
+-<% javascript_include_tag 'pagination.js', 'data-turbolinks-track' => false %>
+-<% if user_signed_in? %>
+-      <span>Hello, <%= current_user.name %></span>
+-      <br>
+-      <%= link_to 'New User Instruction', new_user_instruction_path, class: "btn btn-default" %>
+-      <br>
+-      <tr><%= link_to 'Sign out', destroy_user_session_path, :method => :delete, class: "btn btn-default" %></tr>
+-<% else %>
+-      <%= link_to 'Sign in with Facebook', user_facebook_omniauth_authorize_path, class: "btn btn-default" %>
+-      <br>
+-      <br>
+-      <%= link_to 'Sign in with VKontakte', user_vkontakte_omniauth_authorize_path, class: "btn btn-default" %>
+-      <br>
+-      <br>
+-      <%= link_to 'Sign in with Twitter', user_twitter_omniauth_authorize_path, class: "btn btn-default" %>
+-<% end %>
+ <table>
+   <thead>
+-    <tr>
+-      <th>Instruction</th>
+-      <th>Date of creation</th>
+-      <th>Author</th>
+-    </tr>
++  <tr>
++    <th>Instruction</th>
++    <th>Date of creation</th>
++    <th>Author</th>
++  </tr>
+   </thead>
+ 
+   <tbody id="steps">
+-    <%= render 'steps' %>
++  <%= render 'steps' %>
+   </tbody>
+ 
+ </table>
+-
+-
+-
+-
+-
+-- 
+2.10.1.windows.1
+

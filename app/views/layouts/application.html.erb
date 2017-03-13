@@ -10,6 +10,8 @@
   </head>
 
   <body>
+
+  	      <tr><%= link_to 'Sign out', destroy_user_session_path, :method => :delete, class: "btn btn-default sign-out" %></tr>
     <%= yield %>
     
  </body>

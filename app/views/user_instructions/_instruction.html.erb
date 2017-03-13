@@ -1,17 +1,41 @@
-
 <tr>
-<td>Title</td>
-<td>Description</td>
-
+<td class="title">Title</td>
 </tr>
 
  <% @steps.each do |instruction_step| %>
         <tr>
-          <td><%= instruction_step.title %></td>
+          <td class="val"><%= instruction_step.title %></td>
+        </tr>
+        <tr>  
+          <td><% unless instruction_step.image_url.nil? %><%= image_tag instruction_step.image_url, class:"image" %><br /><% end %>     
+        </tr>
+		<tr>
+		<td class="title description">Description</td>
+		</tr>
+        <tr>  
           <td><%= instruction_step.description %></td>          
-          <td><% unless instruction_step.image_url.nil? %><%= image_tag instruction_step.image_url %><br /><% end %>     
         </tr>
  <% end %>
-<tr><td>
+<tr><td class="paggination" colspan="6">
 <%= will_paginate @steps %>
 </td></tr>
+
+<style rel='stylesheet'>
+	td{
+		text-align: center
+	}
+	.title{	
+		font-size: 20px;
+	}
+	.description{
+		padding: 10px;
+	}
+	.val{
+		padding-top: 20px;
+		padding-bottom: 20px;
+		font-size: 18px;
+	}
+	.image{
+		width: 100%;
+	}
+</style>

@@ -1,30 +1,85 @@
 <p id="notice"><%= notice %></p>
 <% javascript_include_tag 'pagination.js', 'data-turbolinks-track' => false %>
-<p>
-  <strong>Instruction:</strong>
+<p class="p-text">
+  <p class="p-text title">Instruction:</p>
+  <p class="p-text val">
   <%= @user_instruction.instruction %>
+  </p>
 </p>
-<p>
-  <strong>Date of creation:</strong>
+<p  class="p-text">
+  <p class="p-text">Date of creation:</p>
+  <p class="p-text val">
   <%= @user_instruction.date_of_creation %>
+  </p>
 </p>
-<p>
-  <strong>Category:</strong>
+<p class="p-text">
+  <p class="p-text">Category:</p>
+  <p class="p-text val">
   <%= @user_instruction.category %>
+  </p>
 </p>
 
-<p>
+<div class="video">
 	<iframe width="560" height="315" src=<%=@user_instruction.video%> frameborder="0" allowfullscreen></iframe>
-</p>
+</div>
 
 
-<p>
-  <strong>Tags:</strong>
-  <%= raw @user_instruction.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
-</p>
+<div class="tags">
+  <p class="p-text">Tags:</p>
+  <%= raw @user_instruction.tag_list.map { |t| link_to '#' + t, tag_path(t) }.join('  ') %>
+</div>
 <table id="instruction">
 	<%= render 'instruction' %>
 </table>
 <% if user_signed_in? %>
-<%= link_to 'Back to User', @user_instruction.user %>
+<%= link_to 'Profile', @user_instruction.user, class: "btn btn-default prof" %>
 <% end %>
+
+
+<style rel='stylesheet'>
+  .p-text {
+    text-align: center;
+    font-size: 23px;
+    font-weight: bold;
+    margin-top: 20px;
+  }
+
+  .val{
+    font-weight: normal
+  }
+
+  .title{
+    margin-top: 50px
+  }
+
+  .video{
+    margin: auto;
+    width: 560px;
+    margin-top: 20px;
+  }
+
+  a:hover{
+    background-color: transparent;
+  }
+  .tags{
+    text-align: center;
+    max-width: 300px;
+    margin: auto;
+  }
+
+  .tags a{
+    font-size: 20px;
+    padding-left: 2px
+  }
+
+.prof{
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 25px;
+  right: 10px;
+  right: 100px;
+}
+</style>
+
+

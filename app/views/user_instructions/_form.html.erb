@@ -1,3 +1,4 @@
+<div class="container">
 <%= form_for(user_instruction) do |f| %>
   <% if user_instruction.errors.any? %>
     <div id="error_explanation">
@@ -32,7 +33,7 @@
   </div> 
 
   <div class="field tags-wrp">
-    <%= f.label :tag_list, "Tags2" %>
+    <%= f.label :tag_list, "Tags" %>
     <%= f.text_field :tag_list %>
     <select class="js-data-example-ajax" id="tags_list" multiple="multiple" style="width: 300px">
       
@@ -44,7 +45,7 @@
   </div>
 
 <% end %>
-
+</div>
 
 <style>
   #tags_list {
@@ -61,6 +62,11 @@
 
   #tags_list li:hover,#tags_list li:active {
     background: red;
+  }
+
+  .field, .actions {
+    padding-left: 0;
+    text-align: center;
   }
 
   .tags-wrp {

@@ -2,9 +2,10 @@
       
         <% @user_instructions.each do |user_instruction| %>
         <tr>
-          <td><%= link_to user_instruction.instruction, user_instruction, class: "btn btn-default" %></td>
+          <td><%= user_instruction.instruction %></td>
           <td><%= user_instruction.date_of_creation %></td>
-          <td><%= user_instruction.user.name %></td>          
+          <td><%= user_instruction.user.name %></td> 
+          <td><%= link_to 'Show', user_instruction, class: "btn btn-default"%></td>         
           <% if current_user == user_instruction.user %>
             <td><%= link_to 'Edit', edit_user_instruction_path(user_instruction), class: "btn btn-default" %></td>
             
@@ -27,6 +28,6 @@
 
       
     <% end %>
-    <tr><td>
+    <tr><td class="paggination" colspan="6">
      <%= will_paginate @user_instructions %>
     </td></tr>
